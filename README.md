@@ -27,7 +27,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-This project is a simple web application that uses Twilio in the backend in order to send an OTP code to your mobile device. Once you click on either of channel options (voice, sms or whatsapp), the code will be sent to your mobile device and you will need to verify this code.
+This project is a simple web application that uses Twilio in the backend in order to send an OTP code to your mobile device. Once you click on either of channel options (voice, sms or whatsapp) in the frontend, the code will be sent to your mobile device and you will need to verify this code.
 
 
 
@@ -77,21 +77,6 @@ Use this space to show useful examples of how a project can be used. Additional 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
