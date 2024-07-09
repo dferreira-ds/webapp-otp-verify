@@ -45,26 +45,24 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Make sure to have a Twilio account. You will need to buy a Twilio number, and have a working Verify Service Sid.
 2. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/dferreira-ds/webapp-otp-verify.git
    ```
 3. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
+4. In the server folder, make sure to create a .env file with the following information:
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   PORT=YOUR_PORT_NUMBER
+   TWILIO_ACCOUNT_SID=ACxxx
+   TWILIO_AUTH_TOKEN=xxxx
+   TWILIO_SERVICE_SID=VAxxxx
+   TWILIO_NUMBER=+1xxxx
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -99,8 +97,6 @@ See the [open issues](https://github.com/github_username/repo_name/issues) for a
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
@@ -122,12 +118,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/dferreira-ds/webapp-otp-verify.git](https://github.com/dferreira-ds/webapp-otp-verify.git)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
