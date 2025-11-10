@@ -5,61 +5,78 @@ import { FaSms } from "react-icons/fa";
 import { BsFillTelephoneInboundFill } from "react-icons/bs";
 import { countries } from "./countries.js";
 import { useOtpStore } from "../../store/useOtpStore.js";
-import styles from "./SendOtp.module.scss";
+import styles from "./Otp.module.scss";
 
-const Message = () => {
+const Otp = () => {
     const navigate = useNavigate();
-    const createOtp = useOtpStore(state => state.createOtp);
+    const { createOtp } = useOtpStore();
     
     const [data, setData] = useState({
         countryCode: "",
         toNumber: "",
-        channel: "",
     });
     
     const handleChange = (event) => {
         const { name, value } = event.target
         setData({ ...data, [name]: value });
     };
-    
-    const handleButtonClick = (event) => {
-        console.log(event.target);
-        setData({ ...data, "channel": event.target.name });
-    };
 
-    const submitotp = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        createOtp(data);
-        console.log(data);
+
+        const channel = e.nativeEvent.submitter.value;
+
+        if (data.toNumber === "" || channel === "") {
+            return console.error("Destination number or channel are missing.");
+        }
+
+        // Navigate first, then create OTP
         navigate("/verify");
+        await createOtp(data, channel);
     };
 
     return(
         <div className={styles.container}>
-            <form onSubmit={submitotp}>
+            <form onSubmit={handleSubmit}>
                 <select name="countryCode" id="user-select" onChange={handleChange}>
                     {Object.entries(countries).map(([key, value], i) => {
                         return (
                             <option value={key} key={i}>{value}</option>
                         )
-                    })}
+                    })} 
                 </select>
-                <input name="toNumber" type="text" placeholder="Enter your number" onChange={handleChange} />
+                <input
+                    name="toNumber"
+                    type="text"
+                    placeholder="Enter your number..."
+                    onChange={handleChange}
+                    value={data.toNumber}
+                    required 
+                />
                 <p className={styles.paragraph}>You will receive a code to confirm your registration.</p>
                 <div className={styles.buttons}>
-                    <button type="submit" name="sms" onClick={handleButtonClick}>
+                    <button 
+                        type="submit"
+                        value="sms"
+                    >
                         Receive code by SMS &nbsp; <FaSms size={20} />
                     </button>
-                    <button type="submit" name="whatsapp" onClick={handleButtonClick}>
+                    <button
+                        type="submit"
+                        value="whatsapp"
+                    >
                         Receive code by WhatsApp &nbsp; <FaWhatsapp size={20} />
                     </button>
-                    <button type="submit" name="call" onClick={handleButtonClick}>
-                      Receive code by phone call &nbsp; <BsFillTelephoneInboundFill size={20} />
+                    <button
+                        type="submit"
+                        value="call"
+                    >
+                        Receive code by phone call &nbsp; <BsFillTelephoneInboundFill size={20} />
                     </button>
                 </div>
-            </form>        
+            </form>
         </div>
     )
 };
 
-export default Message;
+export default Otp;
